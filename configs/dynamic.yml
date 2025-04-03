@@ -1,0 +1,16 @@
+http:
+  routers:    
+    whoami-router:
+      entryPoints: 
+        - websecure
+      rule: "Host(`api.ildevertapps.com`)"
+      service: whoami-service
+      tls: 
+        certResolver: cloudflare
+
+  # Declaring services
+  services:
+    whoami-service:
+      loadBalancer:
+        servers:
+          - url: http://whoami-app:80
