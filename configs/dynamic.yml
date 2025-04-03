@@ -8,9 +8,22 @@ http:
       tls: 
         certResolver: cloudflare
 
+    keycloak-router:
+      entryPoints: 
+        - websecure
+      rule: "Host(`keycloak.ildevertapps.com`)"
+      service: whoami-service
+      tls: 
+        certResolver: cloudflare
+
   # Declaring services
   services:
     whoami-service:
       loadBalancer:
         servers:
-          - url: http://whoami-app:80
+          - url: http://email:8025
+          
+    keycloak-service:
+      loadBalancer:
+        servers:
+          - url: http://keycloak:8080
