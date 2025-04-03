@@ -12,7 +12,7 @@ http:
       entryPoints: 
         - websecure
       rule: "Host(`keycloak.ildevertapps.com`)"
-      service: whoami-service
+      service: keycloak-service
       tls: 
         certResolver: cloudflare
 
